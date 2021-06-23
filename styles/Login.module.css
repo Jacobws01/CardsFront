@@ -1,0 +1,59 @@
+.loginformcont {
+	width: 100%;
+	display: flex;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	background-color: #999999;
+}
+
+.loginform {
+	padding: 75px;
+	border: 2px solid #262626;
+	margin: 36px; 
+	background-color: #fff;
+}
+
+.loginheader {
+	font-size: 27px;
+	margin-bottom: 18px;
+}
+
+.form {
+	padding: 2px 0px 2px 0px;
+	display: flex;
+}
+
+.input {
+	font-size: 18px;
+	padding: 3px 0px 3px 0px;
+}
+
+.button {
+  padding: 8px 12px 6px 12px;
+  font-size: 12px;
+  background-color: #276afb;
+  color: #fff;
+  border: 1px solid #276afb;
+  border-radius: 6px;
+  margin: 0px 0px 0px 3px;
+  font-weight: 625;
+
+}
+
+.button:hover {
+ background-color: #f00946;
+ transition: 0.2s ease;
+ border: 1px solid #f00946;
+ transform: scale(1.03);
+ cursor: pointer;
+}
+
+
+.loginformpara {
+	text-align: center;
+	padding-top: 9px;
+	margin-top: 25px;
+	margin-bottom: 0px;
+	border-top: 2px solid black;
+}

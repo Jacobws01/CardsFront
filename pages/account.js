@@ -1,0 +1,87 @@
+import { useContext, useState, useEffect } from "react";
+import Link from 'next/link'
+import Head from 'next/head'
+
+import AuthContext from "../context/AuthContext";
+import { API_URL } from '../utils/urls'
+import { BannerAccount } from '../components/Banners'
+
+import styles from '../styles/Account.module.css'
+
+const useOrders = (user, getToken) => {
+    const [orders, setOrders] = useState([])
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        const fetchOrders = async () => {
+            setLoading(true)
+            if(user){
+                try{
+                    const token = await getToken()
+                    const orderRes = await fetch(`${API_URL}/orders`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    const data = await orderRes.json()
+                    setOrders(data)
+                } catch(err){
+                    setOrders([])
+                }
+            }
+            setLoading(false)
+        }
+
+        fetchOrders()
+    }, [user])
+
+
+
+    return {orders, loading}
+}
+
+export default () => {
+
+    const { user, logoutUser, getToken} = useContext(AuthContext)
+
+    const { orders, loading } = useOrders(user, getToken)
+    
+    if(!user){
+        return (
+            <div>
+                <p>Please Login or Register before accessing this page</p>
+                <Link href="/"><a>Go Back</a></Link>
+            </div>
+        )
+    }
+
+    return (
+        <div>
+            <Head>
+                <title>Your Account</title>
+                <meta name="description" content="Your orders will be shown here" />
+            </Head>
+
+            <BannerAccount />
+            <div className={styles.Accountcont}>
+            <div className={styles.Accountorders}>
+            <h2 className={styles.Accountheader}>Account Page</h2>
+            <h3 className={styles.Accountorder}>Your Orders</h3>
+            {loading && <p>Orders are Loading</p>}
+            {orders.map(order => (
+                <div className={styles.orders}key={order.id}>
+                    {new Date(order.created_at).toLocaleDateString( 'en-EN' )} {order.product.name} ${order.total} {order.status}
+                </div>
+            ))}
+            <hr />
+            <div className={styles.loggeddiv}>
+            <p className={styles.Accountlogin}>Logged in as {user.email}</p>
+            <button className={styles.Accountlogout} onClick={logoutUser}><a href="#" onClick={logoutUser}>Logout</a></button>
+            </div>
+            </div>
+            </div>
+        </div>
+    )
+
+}
+
+    

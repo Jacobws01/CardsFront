@@ -1,0 +1,40 @@
+import Link from 'next/link'
+import Image from 'next/image'
+
+import styles from '../styles/Unlimated.module.css'
+
+function TransactionSection() {
+  return (
+      <div className={styles.homehero}>
+        <div className={styles.container}>
+          <div className={styles.rowhomereverse}>
+            <div className={styles.col}>
+              <div className={styles.homeherotextwrappersuper}>
+                <div className={styles.topline}><p>DATA ANALYTICS</p></div>
+                <h1 className={styles.headtext}>
+                  Every transaction is stored on our secure cloud database
+                </h1>
+                <p className={styles.homeherosubtitle}
+                >
+                  Get everything set up and ready in under 10 minutes. All you need to do is add your information and you're ready to go.
+                </p>
+                <Link href='/login'>
+                  <a className={styles.herobutton}>
+                    Sign up Now
+                  </a>
+                </Link>
+              </div>
+            </div>
+            <div className={styles.col}>
+              <div className={styles.homeheroimgdivmargin}>
+                <Image className={styles.homeheroimg} src="/database.jpeg" alt="Picture of a server" 
+                       width={530} height={350} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  );
+}
+
+export default TransactionSection;

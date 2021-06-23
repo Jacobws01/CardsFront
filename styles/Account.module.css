@@ -1,0 +1,48 @@
+.Accountcont {
+	width: 100%;
+	display: flex;
+  	justify-content: center;
+  	background-color: #999999;
+}
+
+.Accountorders {
+	width: 75vw;
+	height: 100%;
+	background-color: #fff;
+	margin: 36px;
+	border: 2px solid black;
+	padding-left: 3vw;
+	padding-right: 3vw;
+}
+
+.Accountheader {
+	padding-top: 9px;
+}
+
+.Accountorder {
+	padding-top: 9px;
+}
+
+.Accountlogout {
+  padding: 0px 18px 0px 18px;
+  border-radius: 18px;
+  font-size: 14px;
+  background-color: #276afb;
+  color: #fff;
+  border: 1px solid #276afb;
+  font-weight: 600;
+}
+
+.Accountlogout:hover {
+ background-color: #f00946;
+ transition: 0.2s ease;
+ border: 1px solid #f00946;
+ transform: scale(1.03);
+ cursor: pointer;
+}
+
+.loggeddiv {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 9px;
+}
